@@ -1,0 +1,26 @@
+name: automerge
+on:
+  pull_request:
+    types:
+      - labeled # run this action when adding a new labeled
+      - unlabeled # run this action when removing a label
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed # run this action once all checks have been completed
+  status: {}
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.14.3"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "automerge,!work in progress" # labels to be used and not used when merging
+          MERGE_METHOD: "squash" # method used to merge PR
+          MERGE_COMMIT_MESSAGE: "pull-request-description" # What message to use when merging the PR
+          MERGE_REQUIRED_APPROVALS: 1 # Number of approvals required merge PR
+          MERGE_DELETE_BRANCH: true # Delete branch after it has been merged
