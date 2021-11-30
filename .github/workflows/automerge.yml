@@ -21,5 +21,5 @@ jobs:
           MERGE_LABELS: "automerge,!work in progress" # labels to be used and not used when merging
           MERGE_METHOD: "squash" # method used to merge PR
           MERGE_COMMIT_MESSAGE: "pull-request-description" # What message to use when merging the PR
-          MERGE_REQUIRED_APPROVALS: 0 # Number of approvals required merge PR
+          MERGE_REQUIRED_APPROVALS: 1 # Number of approvals required merge PR
           MERGE_DELETE_BRANCH: true # Delete branch after it has been merged
